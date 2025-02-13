@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Will You Be My Valentine?</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .yes_btns{
+            transition: all 0.3s ease-in-out;
+        }
+
+        .no_btns{
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+
+</head>
+<body class="bg-pink-200 flex justify-center items-center min-h-screen">
+
+    <div class="container flex flex-col justify-center items-center text-center p-6">
+
+        <h1 class="font-semibold text-3xl md:text-4xl py-4 mb-6 text-red-700">Will you be my Valentine? ❤️</h1>
+
+        <div class="btns flex flex-wrap justify-center gap-4">
+            <button class="yes_btns bg-green-600 text-white text-[1.5rem] md:text-2xl hover:bg-green-500 px-8 py-4 rounded-lg shadow-lg"
+                onclick="yesBtn()">Yes</button>
+            <button class="no_btns bg-red-600 text-white text-[1.5rem] md:text-2xl hover:bg-red-500 px-8 py-4 rounded-lg shadow-lg"
+                onclick="noBtn()">No</button>
+        </div>
+
+        <div class="gif_container mt-12 flex justify-center items-center px-2">
+            <img src="https://media.giphy.com/media/UA1n322Kgn23yY5PrL/giphy.gif?cid=ecf05e47t5gc44msjhhnrk48dwlfoopri709h3qqryl5xnf3&ep=v1_gifs_search&rid=giphy.gif&ct=g"
+                alt="cute_gifs" class="rounded-lg shadow-lg w-72 md:w-96">
+        </div>
+    </div>
+
+    <script>
+
+        const messages = [
+            "Are you absolutely sure, my love? 🥺💕",
+            "Really sure?? My heart is waiting... 💖",
+            "Are you positive? I can't imagine life without you! 🥰",
+            "Pookie please... Don't break my heart! 💔",
+            "Take a second to think about how much I love you! ❤️",
+            "If you say no, I'll be the saddest soul on Earth... 😭",
+            "Every heartbeat of mine calls for you! 💓",
+            "Even the stars would dim if you say no... ⭐💔",
+            "Okay... I guess I'll stop asking... but my heart won’t. 💕",
+            "Just kidding! Please say yes, my one and only! 😘❤️"
+        ];
+
+        let getyes = document.querySelector('.yes_btns');
+        let getno = document.querySelector('.no_btns');
+        let messageidx = 0;
+
+        function noBtn(){
+
+            getno.textContent = messages[messageidx];
+            messageidx = (messageidx + 1) % messages.length;
+
+            let fontSize = window.getComputedStyle(getyes).fontSize;
+            let paddingX = window.getComputedStyle(getyes).paddingLeft;
+            let paddingY = window.getComputedStyle(getyes).paddingTop;
+
+            fontSize = parseFloat(fontSize);
+            paddingX = parseFloat(paddingX);
+            paddingY = parseFloat(paddingY);
+
+            getyes.style.fontSize = `${fontSize * 1.2}px`;
+            getyes.style.padding = `${paddingY * 1.2}px ${paddingX * 1.2}px`;
+        }
+
+        function yesBtn() {
+            window.location.href = "yes.html";
+        }
+        
+    </script>
+
+</body>
+</html>
